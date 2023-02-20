@@ -118,18 +118,18 @@ def display_error(*msgs):
 
 
 # ----------------------------------------------------------------------------------------------------------------------
-def format_string(msg):
+def format_string(msg_str):
     """
     Given a string (msg) this will format it with colors based on the {{COLOR}} tags. (example {{COLOR_RED}}). It will
     also convert literal \n character string into a proper newline.
 
-    :param msg:
+    :param msg_str:
            The string to format.
 
     :return: The formatted string.
     """
 
-    output = msg.replace(r"\n", "\n")
+    output = msg_str.replace(r"\n", "\n")
     output = output.replace("{{", "{")
     output = output.replace("}}", "}")
 
@@ -163,7 +163,7 @@ def format_string(msg):
 
 
 # ----------------------------------------------------------------------------------------------------------------------
-def display_message(*msgs: object):
+def msg(*msgs: object):
     """
     Given any number of args, converts those args to strings, concatenates them, and prints to stdOut.
 
@@ -230,11 +230,11 @@ def multiple_choice_user_input(*msgs,
     options_str = f"({','.join(options)})"
 
     if blank_lines > 0:
-        display_message("\n" * blank_lines)
+        msg("\n" * blank_lines)
 
     result = ""
     while result.upper() not in legal_answers and result.upper() not in alternate_options:
-        display_message(*msgs, options_str)
+        msg(*msgs, options_str)
 
         if default is None:
             prompt = "> "
