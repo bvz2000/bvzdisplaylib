@@ -156,6 +156,8 @@ def format_string(msg_str):
         )
     except KeyError:
         pass
+    except ValueError:
+        pass
 
     output += ENDC
 
